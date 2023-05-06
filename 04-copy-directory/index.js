@@ -13,11 +13,7 @@ async function copyDir() {
 
   await fsPromises.mkdir(pathToCopyFolder, { recursive: true });
 
-  let filesArr;
-
-  await fsPromises.readdir(pathToBasicFolder).then((files) => {
-    filesArr = files;
-  });
+  const filesArr = await fsPromises.readdir(pathToBasicFolder);
 
   for (const file of filesArr) {
     const pathToBasicFile = path.join(pathToBasicFolder, file);
